@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "niInwtoICXQq7zrwoWJb5Wc7ji6vl14JTKqTwmE7n74nJy0w4X4gP+g6BEDKcqT78CCHxufE2+ZWdm/dlPZTow==",
+  "dgSpecHash": "g19KVtrhiKSYqUYv6G8xOR+30XYmM/U29gcVGmzZK9RM0+aepWhZo5/NFHNDAJH+5FqiFu9rPgAb0gBzJSi1wQ==",
   "success": true,
   "projectFilePath": "E:\\A3\\System Progamation\\Project(.Net)\\EsaySaveWPF\\BackupSoftware\\BackupSoftware\\BackupSoftware.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\jakmc\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }
