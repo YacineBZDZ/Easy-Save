@@ -1,7 +1,7 @@
 ﻿using BackupSoftware.Model;
 using BackupSoftware.View;
 using BackupSoftware.ViewModel;
-//using Figgle;
+using Figgle;
 
 namespace BackupSoftware
 {
@@ -10,39 +10,11 @@ namespace BackupSoftware
 
         static void Main(string[] args)
         {
-           // Console.WriteLine(
-               // FiggleFonts.Slant
-             //   );
-             string bigText = @"
+             
+            Console.WriteLine(FiggleFonts.Slant.Render("             EASY SAVE APP  "));
 
 
-                                                                                                                 _______________
-                                                                                                                /               \
-                                                                                                               /                 \
-                                                                                                              /                   \
-          EEEEE  AAAAA  SSSSS  Y   Y       BBBBB   AAAAA  CCCCC   K   K  U   U  PPPPP                        /                     \    
-         E       A   A  S      Y   Y       B   B   A   A  C       K  K   U   U  P    P                      /                       \
-         EEEE    AAAAA  SSSS    Y Y        BBBB    AAAAA  C       KK     U   U  PPPPP                      |     ____       ____     |
-         E       A   A      S    Y         B   B   A   A  C       K  K   U   U  P                          |    |    |     |    |    |
-          EEEEE  A   A  SSSSS    Y         BBBBB   A   A  CCCCC   K   K   UUU   P                          |    |____|     |____|    |
-                                                                                                           |     ____       ____     |
-                                                                                                           |    |    |     |    |    |
-                                                                                                           |    |____|     |____|    |
-                                                                                                           |                         |
-                                                                                                           |     _______________     |
-                                                                                                           |    |               |    |
-                                                                                                            \___|               |___/  
-                                                                                                                 \_____________/       
-
-
-        ";
-
-
-
-
-
- Console.WriteLine(bigText);
- Console.WriteLine( Properties.Resources.Lang);
+            Console.WriteLine( Properties.Resources.Lang);
 
 
             

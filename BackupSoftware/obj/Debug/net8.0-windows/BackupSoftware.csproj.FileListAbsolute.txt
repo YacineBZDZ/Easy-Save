@@ -27,3 +27,4 @@ E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows\BackupSoftware.pdb
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows\BackupSoftware.genruntimeconfig.cache
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows\ref\BackupSoftware.dll
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\bin\Debug\net8.0-windows\Figgle.dll

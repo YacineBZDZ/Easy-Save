@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:BackupSoftware"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,-2,0,2">
+        <Button Content="Button" HorizontalAlignment="Left" Margin="310,159,0,0" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

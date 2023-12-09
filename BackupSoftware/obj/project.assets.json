@@ -2,6 +2,19 @@
   "version": 3,
   "targets": {
     "net8.0-windows7.0": {
+      "Figgle/0.5.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Figgle.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Figgle.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Newtonsoft.Json/13.0.3": {
         "type": "package",
         "compile": {
@@ -18,6 +31,21 @@
     }
   },
   "libraries": {
+    "Figgle/0.5.1": {
+      "sha512": "F21k9oOGRgSb+1dCX0kFDYRBbShSMFvL49xjNmF/dsJwiN5M7zBaSWsYKpi/KZWXVIIxNzTbNTq9ZciucaHYMQ==",
+      "type": "package",
+      "path": "figgle/0.5.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "figgle.0.5.1.nupkg.sha512",
+        "figgle.nuspec",
+        "lib/netstandard2.0/Figgle.dll",
+        "lib/netstandard2.0/Figgle.xml",
+        "logo-square-256px.png"
+      ]
+    },
     "Newtonsoft.Json/13.0.3": {
       "sha512": "HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
       "type": "package",
@@ -51,6 +79,7 @@
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "Figgle >= 0.5.1",
       "Newtonsoft.Json >= 13.0.3"
     ]
   },
@@ -99,6 +128,10 @@
       "net8.0-windows7.0": {
         "targetAlias": "net8.0-windows",
         "dependencies": {
+          "Figgle": {
+            "target": "Package",
+            "version": "[0.5.1, )"
+          },
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
