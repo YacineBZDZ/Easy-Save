@@ -60,7 +60,7 @@ namespace BackupSoftware
 
                 BackupSoftware.Model.Job job = new BackupSoftware.Model.Job(jobName, sourcePath, destinationPath, backupType);
                 backupManager.AddBackupJob(job);
-                BackupJob backupJob = new BackupJob(job);
+                BackupJob backupJob = new BackupJob();
 
 
                 IBackupStrategy strategy = backupType.Equals("Differential", StringComparison.OrdinalIgnoreCase) ? new DifferentialBackup()

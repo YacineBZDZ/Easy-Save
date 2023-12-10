@@ -1,0 +1,5 @@
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware.csproj.AssemblyReference.cache
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\View\MainWindow.g.cs
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\App.g.cs
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware_MarkupCompile.cache
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware_MarkupCompile.lref

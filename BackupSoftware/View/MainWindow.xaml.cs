@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using BackupSoftware.Model;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -16,9 +17,11 @@ namespace BackupSoftware
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string x ="";
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new BackupSoftware.ViewModel.BackupJob();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

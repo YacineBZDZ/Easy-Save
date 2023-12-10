@@ -10,11 +10,13 @@ namespace BackupSoftware.ViewModel
         private LogFile logFile;
         private IBackupStrategy backupStrategy;
 
-        public BackupJob(Job jobInstance)
+        public BackupJob()
         {
-            this.jobInstance = jobInstance;
+            this.JobInstance = new Job("","","","") ;
             this.logFile = new LogFile();
+
         }
+        public Job JobInstance { get => jobInstance; set => jobInstance = value; }
 
         public void SetBackupStrategy(IBackupStrategy strategy)
         {
