@@ -1,5 +1,6 @@
 ﻿using BackupSoftware.Model;
 using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace BackupSoftware.ViewModel
@@ -12,10 +13,10 @@ namespace BackupSoftware.ViewModel
 
         public BackupJob()
         {
-            this.JobInstance = new Job("","","","") ;
+            this.JobInstance = new Job("", "", "", "");
             this.logFile = new LogFile();
-
         }
+
         public Job JobInstance { get => jobInstance; set => jobInstance = value; }
 
         public void SetBackupStrategy(IBackupStrategy strategy)
@@ -27,9 +28,10 @@ namespace BackupSoftware.ViewModel
         {
             try
             {
-                if (backupStrategy == null)
+                
+                if (IsAnyProcessRunning())
                 {
-                    return "Error: Backup strategy not set.";
+                    return "Error: Another software is running. Backup job aborted.";
                 }
 
                 string sourcePath = jobInstance.Source;
@@ -62,6 +64,12 @@ namespace BackupSoftware.ViewModel
                 return $"Error in backup job: {ex.Message}";
             }
         }
+
+        
+        private bool IsAnyProcessRunning()
+        {
+            var processes = Process.GetProcesses();
+            return processes.Length > 1; 
+        }
     }
 }
-
