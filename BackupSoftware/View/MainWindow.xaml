@@ -6,20 +6,26 @@
         xmlns:local="clr-namespace:BackupSoftware"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-     <Grid Background="#F5F5F5">
-        <Grid Background="White" Grid.Row="1" Margin="25,40,25,15" >
-            <Button Height="30"  Content="Add User" Width="100" VerticalContentAlignment="Center" Padding="5" Margin="25" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0"  />
-            <ListView Name="UserList"  BorderBrush="#cdcdcd" Margin="40,70,10,25" Padding="0" SelectionChanged="UserList_SelectionChanged">
+    <Grid Background="#F5F5F5">
+        <Grid Background="White" Grid.Row="1" Margin="25,40,25,15">
+            <Button Height="30" Content="Add Job" Width="100" VerticalContentAlignment="Center" Padding="5" Margin="25" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0" Click="AddJob_Click" />
+            <ListView Name="JobList" BorderBrush="#cdcdcd" Margin="40,70,10,25" Padding="0">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Job Name"/>
-                        <GridViewColumn  Header="Job Type"/>
-                        <GridViewColumn  Header="Job Source"/>
-                        <GridViewColumn  Header="Job Destination"/>
+                        <GridViewColumn Header="Job Name" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Job Type" DisplayMemberBinding="{Binding JobType}" />
+                        <GridViewColumn Header="Job Source" DisplayMemberBinding="{Binding Source}" />
+                        <GridViewColumn Header="Job Destination" DisplayMemberBinding="{Binding Destination}" />
+                        <GridViewColumn Header="Run Job">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Run" Click="RunJob_Click" Tag="{Binding}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
-            </ListView>            
+            </ListView>
         </Grid>
-                              
     </Grid>
 </Window>

@@ -10,6 +10,8 @@ namespace BackupSoftware.ViewModel
         private LogFile logFile;
         private IBackupStrategy backupStrategy;
 
+       // public Icommand ShowWindowCommand {  get; set; }
+
         public BackupJob()
         {
             this.JobInstance = new Job("job1", "E:\\A3\\System Progamation\\Project(.Net)\\source", "E:\\A3\\System Progamation\\Project(.Net)\\destination", "full") ;
