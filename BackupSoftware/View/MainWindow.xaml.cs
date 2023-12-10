@@ -21,7 +21,7 @@ namespace BackupSoftware
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new BackupSoftware.ViewModel.BackupJob();
+            DataContext = new BackupSoftware.ViewModel.BackupJob("YourSoftwarepackagetoDetect");
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

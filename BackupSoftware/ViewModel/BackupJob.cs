@@ -10,11 +10,13 @@ namespace BackupSoftware.ViewModel
         private Job jobInstance;
         private LogFile logFile;
         private IBackupStrategy backupStrategy;
+        private string softwarePackageToDetect;
 
-        public BackupJob()
+        public BackupJob(string softwarePackageToDetect)
         {
-            this.JobInstance = new Job("", "", "", "");
+            this.jobInstance = new Job("", "", "", "");
             this.logFile = new LogFile();
+            this.softwarePackageToDetect = softwarePackageToDetect;
         }
 
         public Job JobInstance { get => jobInstance; set => jobInstance = value; }
@@ -28,10 +30,9 @@ namespace BackupSoftware.ViewModel
         {
             try
             {
-                
-                if (IsAnyProcessRunning())
+                if (IsSoftwarePackageRunning())
                 {
-                    return "Error: Another software is running. Backup job aborted.";
+                    return $"Error: The software package '{softwarePackageToDetect}' is running. Backup job aborted.";
                 }
 
                 string sourcePath = jobInstance.Source;
@@ -65,11 +66,11 @@ namespace BackupSoftware.ViewModel
             }
         }
 
-        
-        private bool IsAnyProcessRunning()
+
+        private bool IsSoftwarePackageRunning()
         {
-            var processes = Process.GetProcesses();
-            return processes.Length > 1; 
+            var processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(softwarePackageToDetect));
+            return processes.Length > 0;
         }
     }
 }
