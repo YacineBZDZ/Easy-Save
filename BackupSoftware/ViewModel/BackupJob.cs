@@ -12,7 +12,7 @@ namespace BackupSoftware.ViewModel
 
         public BackupJob()
         {
-            this.JobInstance = new Job("","","","") ;
+            this.JobInstance = new Job("job1", "E:\\A3\\System Progamation\\Project(.Net)\\source", "E:\\A3\\System Progamation\\Project(.Net)\\destination", "full") ;
             this.logFile = new LogFile();
 
         }

@@ -1,4 +1,5 @@
 ﻿using BackupSoftware.Model;
+using BackupSoftware.ViewModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,24 +18,14 @@ namespace BackupSoftware
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string x ="";
+
+
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new BackupSoftware.ViewModel.BackupJob();
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void ProgressBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void UserList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

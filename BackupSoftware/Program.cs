@@ -7,7 +7,7 @@ namespace BackupSoftware
 {
     class Program
     {
-
+/*
         static void Main(string[] args)
         {
              
@@ -75,6 +75,6 @@ namespace BackupSoftware
 
             Console.WriteLine(Properties.Resources.Exit);
             Console.ReadKey();
-        }
+        }*/
     }
 }
