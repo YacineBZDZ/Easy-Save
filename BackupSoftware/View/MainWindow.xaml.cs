@@ -15,6 +15,8 @@ namespace BackupSoftware
 
         public MainWindow()
         {
+            BackupManager backupManager = new BackupManager();
+
             InitializeComponent();
             DataContext = new BackupSoftware.ViewModel.BackupJob();
             Jobs = new ObservableCollection<BackupSoftware.Model.Job>();
@@ -41,15 +43,34 @@ namespace BackupSoftware
 
         private void RunJob_Click(object sender, RoutedEventArgs e)
         {
+
             // Handle the Run Job button click
-            if (sender is Button btn && btn.Tag is Job job)
+            if (sender is Button button && button.Tag is BackupSoftware.Model.Job job)
             {
                 // Perform the job execution logic here
                 // For example: job.RunBackupJob();
+                MessageBox.Show($"Running job: {job.Name}");
 
-                // Assuming RunBackupJob method exists in BackupManager to run the job
+                string backupType = job.JobType;
+
+                //  string message = jobName + " " + sourcePath + " " + destinationPath + " " + backupType;
+                //MessageBox.Show(message);
+
+                BackupSoftware.Model.Job job2 = new BackupSoftware.Model.Job(job.Name, job.Source, job.Destination, backupType);
+                backupManager.AddBackupJob(job);
+                ((BackupJob)DataContext).JobInstance = job;
+
+
+                IBackupStrategy strategy = backupType.Equals("Differential", StringComparison.OrdinalIgnoreCase) ? new DifferentialBackup()
+                    : (IBackupStrategy)new FullBackup();
+
+                // Set the strategy for the last added job
+                backupManager.GetLastBackupJob().SetBackupStrategy(strategy);
+
+
+
+
                 backupManager.GetLastBackupJob().RunBackupJob();
-
             }
         }
     }
