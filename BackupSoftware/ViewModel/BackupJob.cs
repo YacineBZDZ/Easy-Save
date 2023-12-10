@@ -2,6 +2,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading; 
 
 namespace BackupSoftware.ViewModel
 {
@@ -35,37 +36,40 @@ namespace BackupSoftware.ViewModel
                     return $"Error: The software package '{softwarePackageToDetect}' is running. Backup job aborted.";
                 }
 
-                string sourcePath = jobInstance.Source;
-                string destinationPath = jobInstance.Destination;
-
-                if (string.IsNullOrWhiteSpace(sourcePath) || string.IsNullOrWhiteSpace(destinationPath))
+                
+                lock (this)
                 {
-                    return "Error: Source or destination path is null or empty.";
+                    string sourcePath = jobInstance.Source;
+                    string destinationPath = jobInstance.Destination;
+
+                    if (string.IsNullOrWhiteSpace(sourcePath) || string.IsNullOrWhiteSpace(destinationPath))
+                    {
+                        return "Error: Source or destination path is null or empty.";
+                    }
+
+                    sourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, sourcePath);
+                    destinationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, destinationPath);
+
+                    if (!Directory.Exists(sourcePath))
+                    {
+                        return $"Error: Source directory does not exist - {sourcePath}";
+                    }
+
+                    if (!Directory.Exists(destinationPath))
+                    {
+                        Directory.CreateDirectory(destinationPath);
+                    }
+
+                    string result = backupStrategy.Backup(sourcePath, destinationPath);
+                    logFile.WriteLogFile(jobInstance.Name, sourcePath, destinationPath, result);
+                    return result;
                 }
-
-                sourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, sourcePath);
-                destinationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, destinationPath);
-
-                if (!Directory.Exists(sourcePath))
-                {
-                    return $"Error: Source directory does not exist - {sourcePath}";
-                }
-
-                if (!Directory.Exists(destinationPath))
-                {
-                    Directory.CreateDirectory(destinationPath);
-                }
-
-                string result = backupStrategy.Backup(sourcePath, destinationPath);
-                logFile.WriteLogFile(jobInstance.Name, sourcePath, destinationPath, result);
-                return result;
             }
             catch (Exception ex)
             {
                 return $"Error in backup job: {ex.Message}";
             }
         }
-
 
         private bool IsSoftwarePackageRunning()
         {
