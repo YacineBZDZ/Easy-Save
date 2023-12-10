@@ -19,7 +19,7 @@
             <ComboBoxItem Content="Full"></ComboBoxItem>
             <ComboBoxItem Content="Diferential"></ComboBoxItem>
         </ComboBox>
-        <ComboBox HorizontalAlignment="Left"  Height="21" Margin="48,228,0,0" VerticalAlignment="Top" Width="142" IsDropDownOpen="True" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged" FontFamily="Segoe UI">
+        <ComboBox HorizontalAlignment="Left"  Height="21" Margin="54,228,0,0" VerticalAlignment="Top" Width="142" IsDropDownOpen="True" IsEditable="True" SelectionChanged="ComboBox_SelectionChanged" FontFamily="Segoe UI">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>
