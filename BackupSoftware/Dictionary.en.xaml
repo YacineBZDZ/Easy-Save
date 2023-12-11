@@ -1,0 +1,16 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+xmlns:System="clr-namespace:System;assembly=netstandard">
+
+
+    <System:String x:Key="strMenu">Language</System:String>
+    <System:String x:Key="strMenuEn">English</System:String>
+    <System:String x:Key="strMenuFr">French</System:String>
+    <System:String x:Key="strBuutonAdd">Add JoB</System:String>
+    <System:String x:Key="strBuutonAddjob">Add JoB</System:String>
+    <System:String x:Key="strJobName">Job Name</System:String>
+    <System:String x:Key="strJobType">Job Type</System:String>
+    <System:String x:Key="strJobSour">Job Source</System:String>
+    <System:String x:Key="strJobDes">Job Destination</System:String>
+    <System:String x:Key="strRunJob">Run Job</System:String>
+</ResourceDictionary>

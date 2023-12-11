@@ -2,6 +2,7 @@
 using BackupSoftware.View;
 using BackupSoftware.ViewModel;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -18,6 +19,8 @@ namespace BackupSoftware
             BackupManager backupManager = new BackupManager();
 
             InitializeComponent();
+            switchLanguage("en");
+
             DataContext = new BackupSoftware.ViewModel.BackupJob();
             Jobs = new ObservableCollection<BackupSoftware.Model.Job>();
             JobList.ItemsSource = Jobs;
@@ -39,6 +42,33 @@ namespace BackupSoftware
                 ((BackupJob)DataContext).JobInstance = newJob;
 
             }
+        }
+        private void MenuClikItem(object sender, RoutedEventArgs e)
+        {
+            switchLanguage("en");
+        }
+        private void MenuClikItemfr(object sender, RoutedEventArgs e) {
+            switchLanguage("fr");
+
+        }
+
+        private void switchLanguage(string LanguageCode)
+        {
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch(LanguageCode)
+            {
+                case "en":
+                    dictionary.Source = new Uri("..\\Dictionary.en.xaml", UriKind.Relative);
+                    break;
+                case "fr":
+                    dictionary.Source = new Uri("..\\Dictionary.fr.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\Dictionary.en.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
+
         }
 
         private void RunJob_Click(object sender, RoutedEventArgs e)

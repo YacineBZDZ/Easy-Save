@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="AddJob" Height="450" Width="800">
     <Grid>
-        <Button Click="AddJob_Click" Content="Add Job" HorizontalAlignment="Left" Margin="301,313,0,0" VerticalAlignment="Top" Width="99"/>        <Label Content="Enter Job name" HorizontalAlignment="Left" Height="26" Margin="54,135,0,0" VerticalAlignment="Top" Width="130"/>
+        <Button Click="AddJob_Click" Content="{DynamicResource strBuutonAddjob }" HorizontalAlignment="Left" Margin="301,313,0,0" VerticalAlignment="Top" Width="99" Height="24"/>    
+        <Label Content="Enter Job name" HorizontalAlignment="Left" Height="26" Margin="54,135,0,0" VerticalAlignment="Top" Width="130"/>
         <Label Content="Enter Source Path" HorizontalAlignment="Left" Height="26" Margin="272,135,0,0" VerticalAlignment="Top" Width="142"/>
         <Label Content="Enter Destination Path" HorizontalAlignment="Left" Height="26" Margin="486,135,0,0" VerticalAlignment="Top" Width="162"/>
         <TextBox Name="txt_job"  HorizontalAlignment="Left" Height="28" Margin="48,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="142"/>
@@ -15,7 +16,7 @@
         <TextBox Name="txt_sour" HorizontalAlignment="Left" Height="28" Margin="272,166,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="142"/>
         <Label Content="Enter JobType" HorizontalAlignment="Left" Height="26" Margin="54,222,0,0" VerticalAlignment="Top" Width="130"/>
         <TextBox x:Name="txt_job_type" HorizontalAlignment="Left" Height="28" Margin="48,246,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="142" />
-        <ComboBox HorizontalAlignment="Left" Height="25" Margin="249,248,0,0" VerticalAlignment="Top" Width="165">
+        <ComboBox Name="FileExtensionComboBox" HorizontalAlignment="Left" Height="25" Margin="249,248,0,0" VerticalAlignment="Top" Width="165">
             <ComboBoxItem Content=".txt"></ComboBoxItem>
             <ComboBoxItem Content=".pdf"></ComboBoxItem>
             <ComboBoxItem Content=".docx"></ComboBoxItem>

@@ -10,5 +10,6 @@ namespace BackupSoftware.View
         {
             this.chosingLanguage = cl;
         }
+
     }
 }

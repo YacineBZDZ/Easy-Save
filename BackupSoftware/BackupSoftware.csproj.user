@@ -12,6 +12,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Dictionary.en.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dictionary.fr.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="View\AddJob.xaml">
       <SubType>Designer</SubType>
     </Page>

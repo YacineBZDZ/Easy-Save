@@ -30,3 +30,5 @@ E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows7.0\ref\BackupSoftware.dll
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows7.0\View\AddJob.g.cs
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows7.0\View\AddJob.baml
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows7.0\Dictionary.en.baml
+E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net8.0-windows7.0\Dictionary.fr.baml

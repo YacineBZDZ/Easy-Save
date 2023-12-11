@@ -2,6 +2,7 @@
 using BackupSoftware.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,58 +27,111 @@ namespace BackupSoftware.View
         public AddJob()
         {
             InitializeComponent();
+            switchLanguage("en");
             DataContext = new BackupSoftware.ViewModel.BackupJob();
 
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void fileencr()
         {
+            string sourceFilePath = txt_sour.Text;
+            if (FileExtensionComboBox.SelectedItem is ComboBoxItem selectedItem)
+            {
+                string selectedExtension = selectedItem.Content.ToString();
 
-            
-                //viewlan.chosingLanguage.translate();
-
-                string jobName = txt_job.Text;
-
-                string sourcePath = txt_sour.Text;
-
-                string destinationPath = txt_dest.Text;
-
-                string backupType = txt_job_type.Text;
-
-                while (string.IsNullOrEmpty(backupType) || (!backupType.Equals("Differential", StringComparison.OrdinalIgnoreCase) && !backupType.Equals("Full", StringComparison.OrdinalIgnoreCase)))
+                if (!string.IsNullOrEmpty(sourceFilePath) && !string.IsNullOrEmpty(selectedExtension))
                 {
-                    backupType = txt_job_type.Text;
+                    // Get all files with the selected extension in the same directory
+                    string directory = System.IO.Path.GetDirectoryName(sourceFilePath);
+                    string[] files = Directory.GetFiles(directory, $"*{selectedExtension}");
+
+                    if (files.Length > 0)
+                    {
+                        // Encrypt each file with the selected extension
+                        foreach (string file in files)
+                        {
+                            EncryptFile(file);
+                        }
+
+                        MessageBox.Show($"Files with extension '.{selectedExtension}' encrypted successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No files found with extension '.{selectedExtension}' in the directory.");
+                    }
                 }
-                string message = jobName + " " + sourcePath + " " + destinationPath + " " + backupType;
-                MessageBox.Show(message);
+                else
+                {
+                    MessageBox.Show("Please provide a valid source file and select a file extension.");
+                }
+            }
+        }
 
-                BackupSoftware.Model.Job job = new BackupSoftware.Model.Job(jobName, sourcePath, destinationPath, backupType);
-                backupManager.AddBackupJob(job);
-                ((BackupJob)DataContext).JobInstance = job;
+        private void EncryptFile(string filePath)
+        {
+            // Define XOR key
+            // Any character value will work
+            char xorKey = 'P';
 
+            try
+            {
+                // Get the filename with extension from the original file path
+                string fileName = System.IO.Path.GetFileName(filePath);
 
-                IBackupStrategy strategy = backupType.Equals("Differential", StringComparison.OrdinalIgnoreCase) ? new DifferentialBackup()
-                    : (IBackupStrategy)new FullBackup();
+                // Get the file extension
+                string fileExtension = System.IO.Path.GetExtension(fileName);
 
-                // Set the strategy for the last added job
-                backupManager.GetLastBackupJob().SetBackupStrategy(strategy);
+                // Generate a unique identifier (timestamp) to make the file name unique
+                string uniqueIdentifier = DateTime.Now.ToString("yyyyMMddHHmmss");
 
+                // Construct the output file name appending unique identifier before the extension
+                string outputFileName = $"{fileName}encrypted{uniqueIdentifier}{fileExtension}";
+                string outputFilePath = System.IO.Path.Combine("E:\\A3\\System Progamation\\Project(.Net)\\XOR", outputFileName);
 
-            
-           
-                backupManager.GetLastBackupJob().RunBackupJob();
+                // Read all bytes from the input file
+                byte[] inputBytes = File.ReadAllBytes(filePath);
 
-            txt_job.Text = String.Empty;
-            txt_sour.Text = String.Empty;
-            txt_dest.Text = String.Empty;
-            txt_job_type.Text = String.Empty;
+                // Perform XOR operation of key with every byte in the file content
+                byte[] encryptedBytes = new byte[inputBytes.Length];
+                for (int i = 0; i < inputBytes.Length; i++)
+                {
+                    encryptedBytes[i] = (byte)(inputBytes[i] ^ xorKey);
+                }
 
-           
+                // Write encrypted bytes to the output file (overwriting if it exists)
+                File.WriteAllBytes(outputFilePath, encryptedBytes);
 
+                Console.WriteLine($"File encrypted and saved at: {outputFilePath}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+    
+
+        private void switchLanguage(string LanguageCode)
+        {
+            ResourceDictionary dictionary = new ResourceDictionary();
+            switch (LanguageCode)
+            {
+                case "en":
+                    dictionary.Source = new Uri("..\\Dictionary.en.xaml", UriKind.Relative);
+                    break;
+                case "fr":
+                    dictionary.Source = new Uri("..\\Dictionary.fr.xaml", UriKind.Relative);
+                    break;
+                default:
+                    dictionary.Source = new Uri("..\\Dictionary.en.xaml", UriKind.Relative);
+                    break;
+            }
+            this.Resources.MergedDictionaries.Add(dictionary);
 
         }
+
         private void AddJob_Click(object sender, RoutedEventArgs e)
         {
+            fileencr();
+
             // Get job details from text boxes or input controls
             string jobName = txt_job.Text;
             string sourcePath = txt_sour.Text;
