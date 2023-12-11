@@ -1,6 +1,8 @@
 ﻿using BackupSoftware.Model;
 using System;
+using System.Diagnostics;
 using System.IO;
+using System.Threading; 
 
 namespace BackupSoftware.ViewModel
 {
@@ -9,13 +11,15 @@ namespace BackupSoftware.ViewModel
         private Job jobInstance;
         private LogFile logFile;
         private IBackupStrategy backupStrategy;
+        private string softwarePackageToDetect;
 
-        public BackupJob()
+        public BackupJob(string softwarePackageToDetect)
         {
-            this.JobInstance = new Job("","","","") ;
+            this.jobInstance = new Job("", "", "", "");
             this.logFile = new LogFile();
-
+            this.softwarePackageToDetect = softwarePackageToDetect;
         }
+
         public Job JobInstance { get => jobInstance; set => jobInstance = value; }
 
         public void SetBackupStrategy(IBackupStrategy strategy)
@@ -27,41 +31,50 @@ namespace BackupSoftware.ViewModel
         {
             try
             {
-                if (backupStrategy == null)
+                if (IsSoftwarePackageRunning())
                 {
-                    return "Error: Backup strategy not set.";
+                    return $"Error: The software package '{softwarePackageToDetect}' is running. Backup job aborted.";
                 }
 
-                string sourcePath = jobInstance.Source;
-                string destinationPath = jobInstance.Destination;
-
-                if (string.IsNullOrWhiteSpace(sourcePath) || string.IsNullOrWhiteSpace(destinationPath))
+                
+                lock (this)
                 {
-                    return "Error: Source or destination path is null or empty.";
+                    string sourcePath = jobInstance.Source;
+                    string destinationPath = jobInstance.Destination;
+
+                    if (string.IsNullOrWhiteSpace(sourcePath) || string.IsNullOrWhiteSpace(destinationPath))
+                    {
+                        return "Error: Source or destination path is null or empty.";
+                    }
+
+                    sourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, sourcePath);
+                    destinationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, destinationPath);
+
+                    if (!Directory.Exists(sourcePath))
+                    {
+                        return $"Error: Source directory does not exist - {sourcePath}";
+                    }
+
+                    if (!Directory.Exists(destinationPath))
+                    {
+                        Directory.CreateDirectory(destinationPath);
+                    }
+
+                    string result = backupStrategy.Backup(sourcePath, destinationPath);
+                    logFile.WriteLogFile(jobInstance.Name, sourcePath, destinationPath, result);
+                    return result;
                 }
-
-                sourcePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, sourcePath);
-                destinationPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, destinationPath);
-
-                if (!Directory.Exists(sourcePath))
-                {
-                    return $"Error: Source directory does not exist - {sourcePath}";
-                }
-
-                if (!Directory.Exists(destinationPath))
-                {
-                    Directory.CreateDirectory(destinationPath);
-                }
-
-                string result = backupStrategy.Backup(sourcePath, destinationPath);
-                logFile.WriteLogFile(jobInstance.Name, sourcePath, destinationPath, result);
-                return result;
             }
             catch (Exception ex)
             {
                 return $"Error in backup job: {ex.Message}";
             }
         }
+
+        private bool IsSoftwarePackageRunning()
+        {
+            var processes = Process.GetProcessesByName(Path.GetFileNameWithoutExtension(softwarePackageToDetect));
+            return processes.Length > 0;
+        }
     }
 }
-

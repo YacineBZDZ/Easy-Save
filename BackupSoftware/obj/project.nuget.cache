@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "qsAkOilG41WksDtNPJhYDrxbuUE3d0CzMcMMofsZgVYXzwZYqCwi+u3kC+K/BY0ajdd1dAExWQxpZgVb8Y441g==",
+  "dgSpecHash": "G6tYRsgMLFY5g587jk7FvqTbnOQiOp1+tSpSNPXe/k6w87yIDnCYneKAnvph9yyb/9xo10aukClMW4/OKYnS/Q==",
   "success": true,
-  "projectFilePath": "E:\\A3\\System Progamation\\Project(.Net)\\EsaySaveWPF\\BackupSoftware\\BackupSoftware\\BackupSoftware.csproj",
+  "projectFilePath": "C:\\Users\\LENOVO\\source\\repos\\Easy-Save\\BackupSoftware\\BackupSoftware.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\jakmc\\.nuget\\packages\\figgle\\0.5.1\\figgle.0.5.1.nupkg.sha512",
-    "C:\\Users\\jakmc\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\LENOVO\\.nuget\\packages\\figgle\\0.5.1\\figgle.0.5.1.nupkg.sha512",
+    "C:\\Users\\LENOVO\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }

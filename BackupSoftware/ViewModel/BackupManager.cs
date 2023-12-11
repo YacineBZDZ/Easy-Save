@@ -21,7 +21,7 @@ namespace BackupSoftware.ViewModel
         public void AddBackupJob(Job jobInstance)
         {
            
-                var backupJob = new BackupJob();
+                var backupJob = new BackupJob("YourSoftwarepackagetoDetect");
                 backupJob.JobInstance = jobInstance;
                 backupJobs.Add(backupJob);
             

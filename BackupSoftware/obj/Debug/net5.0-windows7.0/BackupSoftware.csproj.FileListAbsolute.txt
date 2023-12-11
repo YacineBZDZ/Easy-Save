@@ -3,3 +3,8 @@ E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\App.g.cs
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware_MarkupCompile.cache
 E:\A3\System Progamation\Project(.Net)\EsaySaveWPF\BackupSoftware\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware_MarkupCompile.lref
+C:\Users\LENOVO\source\repos\Easy-Save\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware.csproj.AssemblyReference.cache
+C:\Users\LENOVO\source\repos\Easy-Save\BackupSoftware\obj\Debug\net5.0-windows7.0\View\MainWindow.g.cs
+C:\Users\LENOVO\source\repos\Easy-Save\BackupSoftware\obj\Debug\net5.0-windows7.0\App.g.cs
+C:\Users\LENOVO\source\repos\Easy-Save\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware_MarkupCompile.cache
+C:\Users\LENOVO\source\repos\Easy-Save\BackupSoftware\obj\Debug\net5.0-windows7.0\BackupSoftware_MarkupCompile.lref
