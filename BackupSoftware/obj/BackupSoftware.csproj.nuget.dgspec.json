@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\LENOVO\\source\\repos\\Easy-Save\\BackupSoftware\\BackupSoftware.csproj": {}
+    "E:\\A3\\System Progamation\\Project(.Net)\\EsaySaveWPF\\BackupSoftware\\BackupSoftware\\BackupSoftware.csproj": {}
   },
   "projects": {
-    "C:\\Users\\LENOVO\\source\\repos\\Easy-Save\\BackupSoftware\\BackupSoftware.csproj": {
+    "E:\\A3\\System Progamation\\Project(.Net)\\EsaySaveWPF\\BackupSoftware\\BackupSoftware\\BackupSoftware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\LENOVO\\source\\repos\\Easy-Save\\BackupSoftware\\BackupSoftware.csproj",
+        "projectUniqueName": "E:\\A3\\System Progamation\\Project(.Net)\\EsaySaveWPF\\BackupSoftware\\BackupSoftware\\BackupSoftware.csproj",
         "projectName": "BackupSoftware",
-        "projectPath": "C:\\Users\\LENOVO\\source\\repos\\Easy-Save\\BackupSoftware\\BackupSoftware.csproj",
-        "packagesPath": "C:\\Users\\LENOVO\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\LENOVO\\source\\repos\\Easy-Save\\BackupSoftware\\obj\\",
+        "projectPath": "E:\\A3\\System Progamation\\Project(.Net)\\EsaySaveWPF\\BackupSoftware\\BackupSoftware\\BackupSoftware.csproj",
+        "packagesPath": "C:\\Users\\jakmc\\.nuget\\packages\\",
+        "outputPath": "E:\\A3\\System Progamation\\Project(.Net)\\EsaySaveWPF\\BackupSoftware\\BackupSoftware\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\LENOVO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jakmc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
