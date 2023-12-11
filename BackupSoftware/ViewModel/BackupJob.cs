@@ -12,11 +12,11 @@ namespace BackupSoftware.ViewModel
         private LogFile logFile;
         private IBackupStrategy backupStrategy;
         private string softwarePackageToDetect;
-        public BackupJob()
+        public BackupJob(string SoftwarePackageToDetect)
         {
             this.jobInstance = new Job("", "", "", "");
             this.logFile = new LogFile();
-            this.softwarePackageToDetect = "";
+            this.softwarePackageToDetect = SoftwarePackageToDetect;
         }
 
         public Job JobInstance { get => jobInstance; set => jobInstance = value; }
