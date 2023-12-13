@@ -6,23 +6,25 @@
         xmlns:local="clr-namespace:BackupSoftware"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-  
-        
-        
+    <Grid Background="White" Grid.Row="1" Margin="25,40,25,15">
+
+
+
         <Grid Background="White" Grid.Row="1" Margin="25,40,25,15">
-            <Menu>
+            <Menu Margin="0,-48,0,0">
                 <MenuItem Header="{DynamicResource strMenu}" >
                     <MenuItem Header="{DynamicResource strMenuEn}" Click="MenuClikItem"></MenuItem>
                     <MenuItem Header="{DynamicResource strMenuFr}" Click="MenuClikItemfr"></MenuItem>
                 </MenuItem>
             </Menu>
+
             <Button Height="30" Content="{DynamicResource strBuutonAdd}" Width="100" VerticalContentAlignment="Center" Padding="5" Margin="25" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0" Click="AddJob_Click" />
+            <Button Height="30" Content="{DynamicResource strRunAll}" Width="100" VerticalContentAlignment="Center" Padding="5" Margin="0,25,140,0" VerticalAlignment="Top" HorizontalAlignment="Right" BorderThickness="1" BorderBrush="#E0E0E0" Click="Run_All" />
             <ListView Name="JobList" BorderBrush="#cdcdcd" Margin="40,70,10,25" Padding="0">
                 <ListView.View>
                     <GridView>
 
-                        <GridViewColumn    Header="{DynamicResource strJobName}" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn    Header="{DynamicResource strJobName}" DisplayMemberBinding="{Binding Name}"  />
                         <GridViewColumn Header="{DynamicResource strJobType}" DisplayMemberBinding="{Binding JobType}" />
                         <GridViewColumn  Header="{DynamicResource strJobSour}" DisplayMemberBinding="{Binding Source}" />
                         <GridViewColumn Header="{DynamicResource strJobDes}" DisplayMemberBinding="{Binding Destination}" />
@@ -36,6 +38,8 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            <TextBox Name="softwarePackage" HorizontalAlignment="Left" Height="25" Margin="40,40,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="182" TextChanged="softwarePackage_TextChanged"/>
+            <Label Content="{DynamicResource strSoftPack}" HorizontalAlignment="Left" Height="30" Margin="34,15,0,0" VerticalAlignment="Top" Width="182"/>
         </Grid>
     </Grid>
 </Window>

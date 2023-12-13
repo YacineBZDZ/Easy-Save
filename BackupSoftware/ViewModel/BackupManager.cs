@@ -12,6 +12,7 @@ namespace BackupSoftware.ViewModel
         {
             backupJobs = new List<BackupJob>();
         }
+        public List<BackupJob> BackupJobs { get => backupJobs; set => backupJobs = value; }
 
         public BackupJob GetLastBackupJob()
         {

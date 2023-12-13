@@ -13,4 +13,7 @@ xmlns:System="clr-namespace:System;assembly=netstandard">
     <System:String x:Key="strJobSour">Job Source</System:String>
     <System:String x:Key="strJobDes">Job Destination</System:String>
     <System:String x:Key="strRunJob">Run Job</System:String>
+    <System:String x:Key="strSoftPack">Enter The Software Package : </System:String>
+    <System:String x:Key="strRunAll">Run All</System:String>
+
 </ResourceDictionary>

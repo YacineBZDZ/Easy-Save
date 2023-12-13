@@ -1,17 +1,18 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
-                    xmlns:local="clr-namespace:LanguageSwitchDemo"
                     xmlns:System="clr-namespace:System;assembly=netstandard">
     <System:String x:Key="strMenu">Langue</System:String>
     <System:String x:Key="strMenuEn">Anglais</System:String>
     <System:String x:Key="strMenuFr">Français</System:String>
     <System:String x:Key="strBuutonAdd">Ajouter Travail</System:String>
+    <System:String x:Key="strRunAll">Exécuter Tous</System:String>
     <System:String x:Key="strBuutonAddjob">Ajouter Travail</System:String>
     <System:String x:Key="strJobName"> Nom du Travail</System:String>
     <System:String x:Key="strJobType">Type du Travail</System:String>
     <System:String x:Key="strJobSour">Travail Source</System:String>
     <System:String x:Key="strJobDes">Travail Destination</System:String>
     <System:String x:Key="strRunJob">Exécuter</System:String>
+    <System:String x:Key="strSoftPack">Entrer le Logiciel qui est Exécuer :</System:String>
 
 
 </ResourceDictionary>

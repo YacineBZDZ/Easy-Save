@@ -93,7 +93,7 @@ namespace BackupSoftware.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/BackupSoftware;V1.0.0.0;component/view/addjob.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/BackupSoftware;component/view/addjob.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\AddJob.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

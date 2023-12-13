@@ -5,7 +5,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-
 namespace BackupSoftware
 {
     public partial class MainWindow : Window
@@ -20,26 +19,24 @@ namespace BackupSoftware
 
             InitializeComponent();
             switchLanguage("en");
-
             DataContext = new BackupSoftware.ViewModel.BackupJob();
+        
             Jobs = new ObservableCollection<BackupSoftware.Model.Job>();
             JobList.ItemsSource = Jobs;
         }
 
         private void AddJob_Click(object sender, RoutedEventArgs e)
         {
-            // Open AddJob window and add the created job to Jobs collection
             AddJob addJobWindow = new AddJob();
             addJobWindow.Owner = this;
             addJobWindow.ShowDialog();
 
-            // When AddJob window closes, add the job to the list
             if (addJobWindow.DataContext is BackupSoftware.Model.Job newJob)
             {
                 Jobs.Add(newJob);
                 backupManager.AddBackupJob(newJob);
 
-                ((BackupJob)DataContext).JobInstance = newJob;
+              // ((BackupJob)DataContext).JobInstance = newJob;
 
             }
         }
@@ -74,14 +71,12 @@ namespace BackupSoftware
         private void RunJob_Click(object sender, RoutedEventArgs e)
         {
 
-            // Handle the Run Job button click
             if (sender is Button button && button.Tag is BackupSoftware.Model.Job job)
             {
-                // Perform the job execution logic here
-                // For example: job.RunBackupJob();
                 MessageBox.Show($"Running job: {job.Name}");
 
                 string backupType = job.JobType;
+                ((BackupJob)DataContext).JobInstance = job;
 
                 //  string message = jobName + " " + sourcePath + " " + destinationPath + " " + backupType;
                 //MessageBox.Show(message);
@@ -89,12 +84,15 @@ namespace BackupSoftware
                 BackupSoftware.Model.Job job2 = new BackupSoftware.Model.Job(job.Name, job.Source, job.Destination, backupType);
                 backupManager.AddBackupJob(job);
                 ((BackupJob)DataContext).JobInstance = job;
+                ((BackupJob)DataContext).SoftwarePackageToDetect = softwarePackage.Text;
+
+                MessageBox.Show(((BackupJob)DataContext).SoftwarePackageToDetect);
+
 
 
                 IBackupStrategy strategy = backupType.Equals("Differential", StringComparison.OrdinalIgnoreCase) ? new DifferentialBackup()
                     : (IBackupStrategy)new FullBackup();
 
-                // Set the strategy for the last added job
                 backupManager.GetLastBackupJob().SetBackupStrategy(strategy);
 
 
@@ -103,5 +101,23 @@ namespace BackupSoftware
                 backupManager.GetLastBackupJob().RunBackupJob();
             }
         }
+
+
+        private void Run_All(object sender, RoutedEventArgs e)
+        {
+            int jobsnum =  backupManager.BackupJobs.Count;
+            for (int i = 0; i < jobsnum; i++) 
+            {
+                //backupManager.BackupJobs.Runn;
+                //BackupJob theJob ="first";
+                  //  theJob =  backupManager.BackupJobs[i];
+               // MessageBox.Show(theJob);
+                backupManager.GetLastBackupJob().RunBackupJob();
+
+            }
+
+        }
+
+       
     }
 }

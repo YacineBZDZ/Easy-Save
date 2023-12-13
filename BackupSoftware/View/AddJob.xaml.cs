@@ -31,73 +31,72 @@ namespace BackupSoftware.View
             DataContext = new BackupSoftware.ViewModel.BackupJob();
 
         }
-        private void fileencr()
+        private void EncryptFilesWithSelectedExtension()
         {
-            string sourceFilePath = txt_sour.Text;
+            string sourceDirectoryPath = txt_sour.Text;
             if (FileExtensionComboBox.SelectedItem is ComboBoxItem selectedItem)
             {
                 string selectedExtension = selectedItem.Content.ToString();
 
-                if (!string.IsNullOrEmpty(sourceFilePath) && !string.IsNullOrEmpty(selectedExtension))
+                if (Directory.Exists(sourceDirectoryPath) && !string.IsNullOrEmpty(selectedExtension))
                 {
-                    // Get all files with the selected extension in the same directory
-                    string directory = System.IO.Path.GetDirectoryName(sourceFilePath);
-                    string[] files = Directory.GetFiles(directory, $"*{selectedExtension}");
-
-                    if (files.Length > 0)
+                    try
                     {
-                        // Encrypt each file with the selected extension
-                        foreach (string file in files)
+                        string[] files = Directory.GetFiles(sourceDirectoryPath, $"*{selectedExtension}");
+
+                        if (files.Length > 0)
                         {
-                            EncryptFile(file);
-                        }
+                            string outputDirectoryPath = @"E:\A3\System Progamation\Project(.Net)\XOR"; // Output directory path for encrypted files
 
-                        MessageBox.Show($"Files with extension '.{selectedExtension}' encrypted successfully.");
+                            foreach (string filePath in files)
+                            {
+                                EncryptAndSaveToFile(filePath, outputDirectoryPath);
+                            }
+
+                            MessageBox.Show($"Files with extension '{selectedExtension}' encrypted successfully and saved in the 'xor' folder.");
+                        }
+                        else
+                        {
+                            MessageBox.Show($"No files found with extension '{selectedExtension}' in the source directory.");
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        MessageBox.Show($"No files found with extension '.{selectedExtension}' in the directory.");
+                        MessageBox.Show($"An error occurred: {ex.Message}");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Please provide a valid source file and select a file extension.");
+                    MessageBox.Show("Please provide a valid source directory and select a file extension.");
                 }
+            }
+            else
+            {
+                MessageBox.Show("Please select a file extension.");
             }
         }
 
-        private void EncryptFile(string filePath)
+        private void EncryptAndSaveToFile(string filePath, string outputDirectoryPath)
         {
-            // Define XOR key
-            // Any character value will work
             char xorKey = 'P';
 
             try
             {
-                // Get the filename with extension from the original file path
                 string fileName = System.IO.Path.GetFileName(filePath);
-
-                // Get the file extension
                 string fileExtension = System.IO.Path.GetExtension(fileName);
-
-                // Generate a unique identifier (timestamp) to make the file name unique
                 string uniqueIdentifier = DateTime.Now.ToString("yyyyMMddHHmmss");
 
-                // Construct the output file name appending unique identifier before the extension
-                string outputFileName = $"{fileName}encrypted{uniqueIdentifier}{fileExtension}";
-                string outputFilePath = System.IO.Path.Combine("E:\\A3\\System Progamation\\Project(.Net)\\XOR", outputFileName);
+                string outputFileName = $"{System.IO.Path.GetFileNameWithoutExtension(fileName)}_encrypted_{uniqueIdentifier}{fileExtension}";
+                string outputFilePath = System.IO.Path.Combine(outputDirectoryPath, outputFileName);
 
-                // Read all bytes from the input file
                 byte[] inputBytes = File.ReadAllBytes(filePath);
-
-                // Perform XOR operation of key with every byte in the file content
                 byte[] encryptedBytes = new byte[inputBytes.Length];
+
                 for (int i = 0; i < inputBytes.Length; i++)
                 {
                     encryptedBytes[i] = (byte)(inputBytes[i] ^ xorKey);
                 }
 
-                // Write encrypted bytes to the output file (overwriting if it exists)
                 File.WriteAllBytes(outputFilePath, encryptedBytes);
 
                 Console.WriteLine($"File encrypted and saved at: {outputFilePath}");
@@ -107,7 +106,7 @@ namespace BackupSoftware.View
                 Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
-    
+
 
         private void switchLanguage(string LanguageCode)
         {
@@ -130,26 +129,21 @@ namespace BackupSoftware.View
 
         private void AddJob_Click(object sender, RoutedEventArgs e)
         {
-            fileencr();
+            EncryptFilesWithSelectedExtension();
 
-            // Get job details from text boxes or input controls
             string jobName = txt_job.Text;
             string sourcePath = txt_sour.Text;
             string destinationPath = txt_dest.Text;
             string backupType = txt_job_type.Text;
 
-            // Validate job details if needed
 
-            // Create a new job instance
             Job newJob = new Job(jobName, sourcePath, destinationPath, backupType);
 
-            // Pass the new job instance back to the MainWindow
             if (Owner is MainWindow mainWindow)
             {
                 mainWindow.Jobs.Add(newJob);
             }
 
-            // Close the AddJob window
             Close();
         }
     }
